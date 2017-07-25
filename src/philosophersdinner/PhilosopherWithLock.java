@@ -3,11 +3,12 @@ package philosophersdinner;
 import utils.Utils;
 
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Lock;
 
 public class PhilosopherWithLock {
 
-    public static int NUM_OF_DISHES = 3;
+    private AtomicInteger dishesLeft = new AtomicInteger(3);
 
     private final String NAME;
     private final Lock LEFT_FORK;
@@ -49,6 +50,7 @@ public class PhilosopherWithLock {
                 try {
                     System.out.format("%s took the right fork!\n", NAME);
                     System.out.format("%s is eating...\n", NAME);
+                    dishesLeft.decrementAndGet();
                     Utils.pause(1000);
                 } finally {
                     RIGHT_FORK.unlock();
@@ -59,6 +61,10 @@ public class PhilosopherWithLock {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public int dishesLeft() {
+        return dishesLeft.get();
     }
 
     public String getName() {

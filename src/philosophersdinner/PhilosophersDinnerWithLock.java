@@ -21,7 +21,7 @@ public class PhilosophersDinnerWithLock {
 
         for (final PhilosopherWithLock phil : phils) {
             new Thread(() -> {
-                for (int i = 0; i < PhilosopherWithLock.NUM_OF_DISHES; i++) {
+                while (phil.dishesLeft() != 0) {
                     phil.think();
                     phil.eat();
                 }
