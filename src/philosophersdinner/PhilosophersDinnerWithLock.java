@@ -3,7 +3,7 @@ package philosophersdinner;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class PhilosphersDinnerWithLock {
+public class PhilosophersDinnerWithLock {
     public static void main(String[] args) {
 
         final String[] names = {"Aristotle", "Immanuel Kant", "Karl Marks", "Friedrich Nietzsche", "Sigmund Freud"};
