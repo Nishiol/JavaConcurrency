@@ -1,1 +1,2 @@
 # JavaConcurrency
+EPAM summer practice
